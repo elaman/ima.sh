@@ -3,7 +3,7 @@ version: 2.1
 defaults:
   default_image: &default_image
     docker:
-      - image: cimg/deploy:2024.03-node
+      - image: cimg/aws:2024.03
 
 jobs:
   build_and_deploy:
@@ -20,8 +20,7 @@ jobs:
       - run:
           name: Install pnpm package manager
           command: |
-            nvm install --lts
-            corepack enable
+            corepack enable --install-directory=/home/circleci/bin
             corepack prepare pnpm@latest-8 --activate
             pnpm config set store-dir .pnpm-store
 
