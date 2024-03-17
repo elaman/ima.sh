@@ -11,15 +11,19 @@ export default {
   stacks(app) {
     app.stack(function Site({ stack }) {
       const site = new NextjsSite(stack, "site", {
-        customDomain: stack.stage === "prod" ? {
-          domainName: "ima.sh",
-          domainAlias: "www.ima.sh",
-        } : `${stack.stage}.ima.sh`,
+        customDomain: stack.stage === "prod"
+          // Production URL.
+          ? { domainName: "ima.sh", domainAlias: "www.ima.sh" }
+          // Development URL.
+          : `${stack.stage}.ima.sh`,
       });
 
       stack.addOutputs({
         Site: site.customDomainUrl || site.url,
       });
     });
+
+    // We want to remove everything no matter the env.
+    app.setDefaultRemovalPolicy('destroy');
   },
 } satisfies SSTConfig;
