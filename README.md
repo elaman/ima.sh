@@ -43,8 +43,11 @@ To remove the deploy perform:
 pnpm sst remove --stage=prod
 ```
 
-To cleanup the resources perform:
+## Issues
+
+If you get this error: `Is account 182746182746 bootstrapped?`, your AWS resource state has drifted, try:
 
 ```bash
-cloud-nuke aws --region=us-east-1,global
+aws cloudformation delete-stack --stack-name CDKToolkit
+pnpm sst bootstrap
 ```
