@@ -34,13 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 In the project folder execute: 
 
 ```bash
-pnpm sst deploy --stage=prod
+pnpm sst deploy --stage=main
 ```
 
 To remove the deploy perform:
 
 ```bash
-pnpm sst remove --stage=prod
+pnpm sst remove --stage=main
 ```
 
 ## Issues

@@ -11,7 +11,7 @@ export default {
   stacks(app) {
     app.stack(function Site({ stack }) {
       const site = new NextjsSite(stack, "site", {
-        customDomain: stack.stage === "prod"
+        customDomain: stack.stage === "main"
           // Production URL.
           ? { domainName: "ima.sh", domainAlias: "www.ima.sh" }
           // Development URL.
